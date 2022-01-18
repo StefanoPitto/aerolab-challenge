@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from "react";
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ItemContainer from "./Components/ItemContainer/ItemContainer";
+import InfoProvider from "./Components/Context/InfoProvider";
+import NavBar from "./Components/NavBar/NavBar";
+import AddPoints from "./Components/AddPoints/AddPoints";
+import RedeemHistory from "./Components/RedeemHistory/RedeemHistory";
+const App = () => {
+	return (
+		<InfoProvider>
+			<BrowserRouter>
+				<NavBar />
+				<Routes>
+					<Route path="/" element={<ItemContainer />} />
+					<Route path="/add-points" element={<AddPoints />} />
+					<Route path="/redeem-history" element={<RedeemHistory />} />
+				</Routes>
+			</BrowserRouter>
+		</InfoProvider>
+	);
+};
 
 export default App;
